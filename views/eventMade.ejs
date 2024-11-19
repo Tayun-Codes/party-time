@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Party Time</title>
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="page-header text-center">
+      <h1><img class="heading" src="/img/makeEvent.png"> Event Made!</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+    <% if (user.local.username) { %>
+      <h2>Share your event!</h2>
+      <span> <!-- IMPORT THE UNIQUE EVENT LINK --> </span>
+      <a href="/profile" class="btn btn-default btn-sm">Profile</a>
+
+  </div>
+  <% } %>
+
+</body>
+
+</html>

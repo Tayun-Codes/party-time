@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>Party Time</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><img class="heading" src="/img/makeEvent.png"> Plan your Event!</h1> 
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+    <% if (user.local.username) { %>
+      <form action='/eventMade' method="POST">
+        <h2>Name of your event: </h2>
+        <input type="text" placeholder="Title your event" name="title" required>
+        <h2>Date:</h2>
+        <input type="text" placeholder="Date MM/DD/YYYY" name="date">
+        <h2>Location:</h2>
+        <input type="text" placeholder="Fun Place, Happiness" name="location">
+        <h2>What should attendees know?</h2>
+        <input type="text" placeholder="RSVP by.." name="comment">
+        <br>
+        <br>
+        <h2>Guest List:</h2>
+        <h3>Write a list of usernames to invite separated by commas.</h3>
+        <input type="text" placeholder="Username1, Username2, ..." name="guestList">
+        <br>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <% } %>
+
+</body>
+</html>

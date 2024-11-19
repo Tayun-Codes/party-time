@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <title>Party Time</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><img class="heading" src="/img/profile.png"> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> User Info</h3>
+
+                <% if (user.local.username) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <!-- <strong>username</strong>: <%= user.local.username %><br> -->
+                        <strong>username</strong>: <%= user.local.username %><br>
+                        <!-- <strong>password</strong>: <%= user.local.password %> -->
+                    </p>
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+
+            </div>
+        </div>
+        <div class="col-sm-6">
+          <a href="/makeEvent" class="btn btn-default btn-sm">Make Event</a>
+          <h3>Hosted Events</h3>
+            <ul class="events">
+            <% for(var i=0; i<events.length; i++) {%>
+              <% if (events[i].type === 'host') {%>
+                <li class="event">
+                  <span class='title'><strong>Title: <a href=<%= `/event/${events[i].href}` %>> <%= events[i].title %></a></strong></span>
+                  <span>Date: <%= events[i].date %></span>
+                  <span>Location: <%= events[i].location %></span>
+                  <span>Guest List: <%= events[i].guestList %></span>
+                  <span>Send this <a href=<%= `localhost:8080/invite/${events[i].href}`%>>RSVP link</a> to your guests [<%= `localhost:8080/invite/${events[i].href}` %>]</span>
+                  <span class='del'><i class="fa fa-trash-o" title="delete rating" aria-hidden="true"></i></span>
+                </li>
+              <% } %>
+            <% } %>
+            </ul>
+
+          <br>
+
+          <h3>RSVP'ed</h3>
+          <ul class="events">
+            <% for(var i=0; i<events.length; i++) {%>
+              <% if (events[i].type === 'rsvp') {%>
+                <li class="event">
+                  <span class='title'><strong><a href=<%= `/event/${events[i].href}` %>> <%= events[i].title %></a></strong></span>
+                  <span><%= events[i].date %></span>
+                  <span><%= events[i].location %></span>
+                  <span><i class="fa fa-pencil-square-o" title="edit comment" aria-hidden="true"></i></span>
+                  <span class='del'><i class="fa fa-trash-o" title="delete rating" aria-hidden="true"></i></span>
+                </li>
+              <% } %>
+            <% } %>
+
+            </ul>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
